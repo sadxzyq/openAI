@@ -20,7 +20,7 @@ modul: {
 	os: require('os'),
 	pino: require('pino'),
 	parsems: require('parse-ms'),
-	openAI: require('openAi'),
+	openAI: require('openai'),
 	process: require('process'),
 	speed: require('performance-now'),
     stream: require('stream'),
