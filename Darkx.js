@@ -62,7 +62,7 @@ module.exports = bang = async (client, dark, chatUpdate, store) => {
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
-        if (setting.autoAI) {
+        
             // Push Message To Console && Auto Read
             if (argsLog && !dark.isGroup) {
             client.readMessages([dark.key])
@@ -70,14 +70,13 @@ module.exports = bang = async (client, dark, chatUpdate, store) => {
             } else if (argsLog && dark.isGroup) {
             // client.sendReadReceipt(dark.chat, dark.sender, [dark.key.id])
             console.log(chalk.black(chalk.bgGreen('[ CMD ]')), color(argsLog, 'turquoise'), (`[ ${dark.sender.replace('@s.whatsapp.net', '@s.whatsapp.net')} ]`), chalk.blueBright('| Goup :'), chalk.magenta(groupName))
-            }
-        } else if (!setting.autoAI) {
+               } else
             if (isCmd2 && !dark.isGroup) {
                 console.log(chalk.black(chalk.bgGreen('[ CMD ]')), color(argsLog, 'turquoise'), chalk.blue(`[ ${dark.sender.replace('@s.whatsapp.net', '@s.whatsapp.net')} ]`))
                 } else if (isCmd2 && dark.isGroup) {
                 console.log(chalk.black(chalk.bgGreen('[ CMD ]')), color(argsLog, 'turquoise'), chalk.magenta(`[ ${dark.sender.replace('@s.whatsapp.net', '')} ]`), chalk.blueBright('| Group :'), chalk.yellow(groupName))
                 }
-        }
+        
         
             if (setting.autoAI) {
         if (budy) {
