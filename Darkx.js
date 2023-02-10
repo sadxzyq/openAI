@@ -64,46 +64,23 @@ module.exports = bang = async (client, dark, chatUpdate, store) => {
 
         
             // Push Message To Console && Auto Read
+if (!setting.autoAI) {
             if (argsLog && !dark.isGroup) {
             client.readMessages([dark.key])
             console.log(chalk.black(chalk.bgGreen('[ CMD ]')), color(argsLog, 'turquoise'), chalk.magenta(`[ ${dark.sender.replace('@s.whatsapp.net', '@s.whatsapp.net')} ]`))
             } else if (argsLog && dark.isGroup) {
             // client.sendReadReceipt(dark.chat, dark.sender, [dark.key.id])
             console.log(chalk.black(chalk.bgGreen('[ CMD ]')), color(argsLog, 'turquoise'), (`[ ${dark.sender.replace('@s.whatsapp.net', '@s.whatsapp.net')} ]`), chalk.blueBright('| Goup :'), chalk.magenta(groupName))
-               } else
+}
+               } else if (!setting.autoAI) {
             if (isCmd2 && !dark.isGroup) {
                 console.log(chalk.black(chalk.bgGreen('[ CMD ]')), color(argsLog, 'turquoise'), chalk.blue(`[ ${dark.sender.replace('@s.whatsapp.net', '@s.whatsapp.net')} ]`))
                 } else if (isCmd2 && dark.isGroup) {
                 console.log(chalk.black(chalk.bgGreen('[ CMD ]')), color(argsLog, 'turquoise'), chalk.magenta(`[ ${dark.sender.replace('@s.whatsapp.net', '')} ]`), chalk.blueBright('| Group :'), chalk.yellow(groupName))
                 }
-        
-        
-            if (setting.autoAI) {
-        if (budy) {
-            try {
-            if (setting.keyopenai === 'BUATAN DARKX ') return reply('ISI_APIKEY_Di_openKey.js')
-            const configuration = new Configuration({
-              apiKey: setting.keyopenai, 
-            });
-            const openai = new OpenAIApi(configuration);
-            
-            const response = await openai.createCompletion({
-              model: "text-davinci-003",
-              prompt: budy,
-              temperature: 0.3,
-              max_tokens: 3000,
-              top_p: 1.0,
-              frequency_penalty: 0.0,
-              presence_penalty: 0.0,
-            });
-            dark.reply(`${response.data.choices[0].text}\n\n`)
-            } catch(err) {
-                console.log(err)
-                dark.reply('Ada yg lg eror bwang maap ye!')
-            }
         }
-    }
-
+        
+            
 
     if (isCmd2) {
       switch (command) {
